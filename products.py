@@ -1,10 +1,16 @@
+import os
+
 product = []
-with open('products.csv', 'r', encoding='utf-8') as f:
-	for line in f:
-		if 'Mechandise,Price' in line:
-			continue
-		name, price = line.strip().split(',')
-		product.append([name, price])
+if os.path.isfile('products.csv'):
+	print('檔案存在!')
+	with open('products.csv', 'r', encoding='utf-8') as f:
+		for line in f:
+			if 'Mechandise,Price' in line:
+				continue
+			name, price = line.strip().split(',')
+			product.append([name, price])
+else:
+	print('檔案不存在, 請創立一個新的!')
 while True:
 	name = input('請輸入購買商品名稱: ')
 	if name == 'q':
