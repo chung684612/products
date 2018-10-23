@@ -5,5 +5,7 @@ while True:
 		break
 	price = int(input('請輸入購買此商品之價錢: '))
 	product.append([name, price])
-number = int(input('請輸入想要收尋商品之編號: '))
-print(product[number])
+
+with open('products.csv', 'w') as f:
+	for p in product:
+		f.write(p[0] + ',' + str(p[1]) + '\n')
